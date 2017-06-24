@@ -1,0 +1,23 @@
+@import 'theme.scss';
+
+.TopNav {
+  flex       : 1 0 auto;
+  padding    : 8px;
+  max-width  : 1140px;
+}
+
+.TopNav-wrap {
+  top             : 0;
+  flex            : 1 0 auto;
+  left            : 0;
+  right           : 0;
+  display         : flex;
+  position        : fixed;
+  background      : rgba(0,0,0,0.95);
+  justify-content : center;
+}
+
+.TopNav-brand {
+  @include TitleFont;
+  color : white;
+}

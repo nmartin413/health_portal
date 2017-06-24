@@ -1,0 +1,37 @@
+@import 'theme.scss';
+
+.App-wrap {
+  position: relative;
+}
+
+.App-contentWrap {
+  display         : flex;
+  min-height      : 105vh;
+  background      : $color-background;
+  justify-content : center;
+}
+
+.App-content {
+  flex       : 1 0 auto;
+  padding    : 48px 32px;
+  max-width  : 1140px;
+}
+
+.App-loading {
+  background-size     : 200px;
+  background-image    : url('/static/images/heartbeat.png');
+  background-repeat   : no-repeat;
+  background-position : center;
+  width               : 50px;
+  height              : 100px;
+  animation           : 1200ms AppLoading cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  position            : absolute;
+  top                 : calc(50vh - 50px);
+  left                : calc(50vw - 50px);
+  opacity             : 0.25;
+}
+
+@keyframes AppLoading {
+  0%   { background-position : -125px 50%; }
+  100% { background-position : -25px 50%; }
+}

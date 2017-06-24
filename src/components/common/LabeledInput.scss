@@ -1,0 +1,40 @@
+@import 'theme.scss';
+
+.LabeledInput {
+}
+
+.LabeledInput-label {
+  display        : block;
+  font-size      : 12px;
+  letter-spacing : 0.05em;
+  margin         : 4px;
+  color          : $color-text-muted;
+}
+
+.LabeledInput-input {
+  display       : block;
+  font-size     : 14px;
+  color         : #999;
+  padding       : 8px 12px;
+  margin        : 8px 4px;
+  background    : rgb(250,250,250);
+  border        : none;
+  border-bottom : 2px solid rgba(0,0,0,0.1);
+  width         : 250px;
+  transition    : all 250ms;
+}
+
+.LabeledInput-input:hover {
+  outline             : none;
+  border-bottom-color : rgba(0,0,0,0.2);
+}
+
+.LabeledInput-input:focus,
+.LabeledInput-input:active {
+  outline             : none;
+  border-bottom-color : $color-highlight;
+}
+
+.LabeledInput-input::placeholder {
+  color: #888;
+}

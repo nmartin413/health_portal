@@ -1,0 +1,23 @@
+
+// Colors
+
+$color-background  : #f7f7f7;
+$color-foreground  : #fff;
+$color-highlight   : #39abd1;
+
+$color-line-light  : #e7e7e7;
+$color-line-medium : #bbb;
+
+$color-text-basic    : #333;
+$color-text-muted    : #999;
+$color-text-inactive : #bbb;
+
+$color-btn           : #ddd;
+$color-btn-highlight : #39abd1;
+
+@mixin TitleFont {
+  font-family    : 'Open Sans', sans-serif;
+  font-weight    : 800;
+  letter-spacing : 0.05em;
+  text-transform : uppercase;
+}

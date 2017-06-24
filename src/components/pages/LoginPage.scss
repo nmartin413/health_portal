@@ -1,0 +1,58 @@
+@import 'theme.scss';
+
+.LoginPage {
+  height          : 90vh;
+  display         : flex;
+  align-content   : center;
+  justify-content : center;
+}
+
+.LoginPage-prompt {
+  flex          : 0 0 200px;
+  margin        : auto 0;
+  box-shadow    : 0 0 3px rgba(0,0,0,0.25);
+  background    : $color-foreground;
+  border-radius : 3px;
+}
+
+.LoginPage-graphic {
+  height              : 220px;
+  background-size     : contain;
+  background-image    : url('/static/images/heartbeat.png');
+  background-repeat   : no-repeat;
+  background-position : center;
+}
+
+.LoginPage-userTypes {
+  display : flex;
+}
+
+.LoginPage-userTypeOption {
+  flex          : 1 0;
+  cursor        : pointer;
+  color         : $color-text-inactive;
+  padding       : 12px 8px;
+  text-align    : center;
+  transition    : all 250ms;
+  border-bottom : 2px solid $color-line-light;
+
+  &:hover {
+    color: $color-text-basic;
+  }
+
+  &.active {
+    color               : $color-text-basic;
+    border-bottom-color : $color-line-medium;
+  }
+}
+
+.LoginPage-form {
+}
+
+.LoginPage-formControl {
+  margin : 24px 12px;
+
+  &.right {
+    text-align: right;
+  }
+}

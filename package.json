@@ -1,0 +1,45 @@
+{
+  "name": "health_portal",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:3001",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.17.2",
+    "classnames": "^2.2.5",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.3",
+    "lodash": "^4.17.4",
+    "pg": "^6.4.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.1.1",
+    "redux": "^3.7.0",
+    "redux-thunk": "^2.2.0",
+    "reset-css": "^2.2.0",
+    "sqlite3": "^3.1.8",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.0.2",
+    "react-scripts": "1.0.7",
+    "redux-devtools": "^3.4.0"
+  },
+  "scripts": {
+    "start": "npm-run-all -p watch-css start-ui watch-server",
+    "build": "npm run build-css && react-scripts build",
+    "start-ui": "react-scripts start",
+    "start-server": "node server",
+    "init-db": "initdb ./tmp/postgres",
+    "stop-db": "pg_ctl -D ./tmp/postgres -l tmp/postgres-logfile stop",
+    "start-db": "pg_ctl -D ./tmp/postgres -l tmp/postgres-logfile start",
+    "watch-server": "nodemon --watch server --exec 'node server'",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
