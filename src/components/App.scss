@@ -6,14 +6,14 @@
 
 .App-contentWrap {
   display         : flex;
-  min-height      : 105vh;
+  min-height      : 100vh;
   background      : $color-background;
   justify-content : center;
 }
 
 .App-content {
   flex       : 1 0 auto;
-  padding    : 48px 32px;
+  padding    : 32px;
   max-width  : 1140px;
 }
 

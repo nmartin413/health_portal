@@ -5,7 +5,7 @@ import Constants                from '../Constants'
 import {connect}                from 'react-redux'
 import LoginPage                from './pages/LoginPage'
 import PropTypes                from 'prop-types'
-import DoctorHome               from './pages/DoctorHome'
+import PatientList              from './pages/PatientList'
 import PatientHome              from './pages/PatientHome'
 import {getSession}             from '../actions/user'
 import React, { Component }     from 'react'
@@ -44,7 +44,7 @@ class App extends Component {
               <div className="App-content">
                 {user.pending && <div className="App-loading" />}
                 {!user.pending && !hasAuth  && <Route exact path="/" component={LoginPage} />}
-                {!user.pending && isDoctor  && <Route exact path="/" component={DoctorHome} />}
+                {!user.pending && isDoctor  && <Route exact path="/" component={PatientList} />}
                 {!user.pending && isPatient && <Route exact path="/" component={PatientHome} />}
               </div>
             </div>

@@ -24,6 +24,7 @@ module.exports = function (db, next) {
       id          bigserial PRIMARY KEY,
       key         uuid      NOT NULL,
       user_id     bigint    NOT NULL     REFERENCES users ON DELETE RESTRICT,
+      expires_at  timestamp NOT NULL,
       created_at  timestamp NOT NULL,
       updated_at  timestamp NOT NULL
     );
@@ -54,14 +55,10 @@ module.exports = function (db, next) {
 
     CREATE TABLE IF NOT EXISTS medical_records (
       id             serial    PRIMARY KEY,
-      purpose        text      NOT NULL,
       patient_id     bigint    NOT NULL     REFERENCES patients ON DELETE RESTRICT,
       timestamp      text      NOT NULL,
       created_at     timestamp NOT NULL,
-      updated_at     timestamp NOT NULL,
-      phone_number   text      NOT NULL,
-      address_line_1 text      NOT NULL,
-      address_line_2 text      NOT NULL
+      updated_at     timestamp NOT NULL
     );
 
     CREATE TABLE IF NOT EXISTS appointments (
@@ -71,10 +68,7 @@ module.exports = function (db, next) {
       patient_id     bigint    NOT NULL    REFERENCES patients ON DELETE RESTRICT,
       created_at     timestamp NOT NULL,
       updated_at     timestamp NOT NULL,
-      phone_number   text      NOT NULL,
-      appointment_at timestamp NOT NULL,
-      address_line_1 text      NOT NULL,
-      address_line_2 text      NOT NULL
+      appointment_at timestamp NOT NULL
     );
 
     CREATE UNIQUE INDEX IF NOT EXISTS idx_users_email                ON users(email);
