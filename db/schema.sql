@@ -43,13 +43,6 @@ CREATE TABLE IF NOT EXISTS patients (
   address_zip_code text
 );
 
-CREATE TABLE IF NOT EXISTS medical_records (
-  id             serial    PRIMARY KEY,
-  patient_id     bigint    NOT NULL     REFERENCES patients ON DELETE RESTRICT,
-  created_at     timestamp NOT NULL,
-  updated_at     timestamp NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS appointments (
   id             bigserial PRIMARY KEY,
   purpose        text      NOT NULL,
@@ -66,7 +59,6 @@ CREATE TABLE IF NOT EXISTS appointments (
 CREATE UNIQUE INDEX IF NOT EXISTS idx_users_email                ON users(email);
 CREATE INDEX IF NOT EXISTS        idx_doctors_user_id            ON doctors(user_id);
 CREATE INDEX IF NOT EXISTS        idx_patients_user_id           ON patients(user_id);
-CREATE INDEX IF NOT EXISTS        idx_medical_records_patient_id ON medical_records(patient_id);
 CREATE INDEX IF NOT EXISTS        idx_appointments_patient_id    ON appointments(patient_id);
 CREATE INDEX IF NOT EXISTS        idx_appointments_doctor_id     ON appointments(doctor_id);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_sessions_key               ON sessions(key);

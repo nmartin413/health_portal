@@ -8,10 +8,14 @@ module.exports = function (db, app) {
     queries.matchUserSession(db, { sessionKey }, (err, user) => {
       if (err) return next(err)
 
-      queries.getDoctors(db, (err, doctors) => {
-        if (err) return next(err)
-        next(null, { user, doctors })
-      })
+      if (user) {
+        queries.getDoctors(db, (err, doctors) => {
+          if (err) return next(err)
+          next(null, { user, doctors })
+        })
+      } else {
+        next(null, { user: null })
+      }
     })
   }
 
@@ -37,10 +41,15 @@ module.exports = function (db, app) {
           if (err) return handleError(res, err)
           res.cookie('session-id', sessionKey, { httpOnly: true })
 
-          fetchSessionData(db, sessionKey, (err, sessionData) => {
-            if (err) return handleError(res, err)
-            res.send(sessionData)
-          })
+          if (sessionKey) {
+            fetchSessionData(db, sessionKey, (err, sessionData) => {
+              if (err) return handleError(res, err)
+              res.send(sessionData)
+            })
+          } else {
+            res.send({ user: null })
+          }
+
         })
       } else {
         res.status(401).send('Not Authorized')
