@@ -12,8 +12,8 @@ See the "Design Topics" section below for more in-depth technical notes on patte
 ## Get running
 
 ##### system deps
-- PostgreSQL (`pg_ctl`, `psql`, `initdb`)
-- PostgreSQL Contrib (`uuid-ossp` and `chkpass`)
+- PostgreSQL v9.6 (`pg_ctl`, `psql`, `initdb`)
+- PostgreSQL Contrib (`chkpass` module)
 - Node JS (tested with v6.10.3)
 
 ##### setup
@@ -50,6 +50,8 @@ See the "Design Topics" section below for more in-depth technical notes on patte
 - Foreign key constraints are used wherever possible to ensure referrential integrity
 - The app will attempt to create a Postgres "database" named "health_portal" and an associated "health_portal_user" to access the database
 - In the web server code, the various SQL queries used by the endpoints are abstracted as functions in a `queries` module, instead of being accessed through an ORM or inline SQL statements in endpoint code. This has the pleasant effect of creating a very clear and evident "inventory" of the discreet ways in which the database is interacted with.
+- To securely store passwords with minimal custom code, the Postgres `chkpass` module is used. [read more](https://www.postgresql.org/docs/9.6/static/chkpass.html)
+
 
 ##### Auth & Security
 - The web server is a standard implementation of Express v4, using a few common "parser" libraries for the interpretation of JSON and cookies
@@ -61,6 +63,7 @@ See the "Design Topics" section below for more in-depth technical notes on patte
 - The `/patient-api/*` endpoints should prefer using `**/me` style endpoints (where the keys to tables are inferred from the session token) whenever possible, to minimize the number of potential ways in which an API could be compromised
 - Auth stickiness is implemented as an `HTTPOnly` cookie. This mitigates risk of browser-originating malicious attacks on the server.
 - Standard security practices such as using parameterized and typed SQL queries are observed
+- To generate non-predictable, unique identifiers for sessions the Postgres `uuid` column type is used, along with the `node-uuid` module (v4 UUIDs are used)
 
 ##### Client Data & Payload Design
 The client uses the popular `redux` framework to manage data on the frontend. Endpoint response payloads are tailored and optimized for the front end experience to minimize the number of outbound HTTP requests and keep the front end data management code as light as possible. A potential downside to this approach is that the API is relatively coupled to the current frontend (and front ends implementing similar features). However, since there is no current need for a more generic REST implemenation, the realizable benefits likely outweigh the theoretical costs.
@@ -87,5 +90,6 @@ The client uses the popular `redux` framework to manage data on the frontend. En
 - Pooling of Postgres DB connections
 - Tests for front end components
 - Implement Medical Record uploads
+- Migration framework for database changes over time
 - Implementation of `watson` (or similar) logging framework for HTTP and Postgres requests on the web server
 - Database Record-level security measures (ensuring there's rules on who can see what rows, beyond the endpoint security)
