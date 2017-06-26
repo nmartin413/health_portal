@@ -105,10 +105,13 @@ The client uses the popular `redux` framework to manage data on the frontend. En
 - Pooling of Postgres DB connections
 - Tests for front end components
 - Tests against HTTP endpoints
-- Implement Medical Record uploads
 - Migration framework for database changes over time
 - Implementation of `watson` (or similar) logging framework for HTTP and Postgres requests on the web server
 - Database Record-level security measures (ensuring there's rules on who can see what rows, beyond the endpoint security)
+- Implement Medical Record uploads
+  - Create a `medical_records` table that represents a file stored on a local server (or perhaps a service such as S3)
+  - Create two endpoints (similar to `appointments`) that allow both doctors and patients to view/download medical records & their associated files.
+  - Create a file upload UI that allows doctors and patients to create new medical records. 
 
 ## Screenshots
 ![Login](/readme_images/hp_login.png?raw=true "Login")
