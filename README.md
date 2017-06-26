@@ -63,8 +63,15 @@ See the "Design Topics" section below for more in-depth technical notes on patte
 - Standard security practices such as using parameterized and typed SQL queries are observed
 
 ##### Client Data & Payload Design
-- Client uses the popular `redux` framework to manage data on the frontend.
-- Endpoint response payloads are tailored and optimized for the front end experience to minimize the number of outbound HTTP requests and keep the front end data management code as light as possible. A potential downside to this approach is that the API is relatively coupled to the current frontend (and front ends implementing similar features). However, since there is no current need for a more generic REST implemenation, the realizable benefits likely outweigh the theoretical costs.
+The client uses the popular `redux` framework to manage data on the frontend. Endpoint response payloads are tailored and optimized for the front end experience to minimize the number of outbound HTTP requests and keep the front end data management code as light as possible. A potential downside to this approach is that the API is relatively coupled to the current frontend (and front ends implementing similar features). However, since there is no current need for a more generic REST implemenation, the realizable benefits likely outweigh the theoretical costs.
+
+- The `session` endpoints also include "side-loaded" data for bootstrapping the app, such as the list of `doctors` in the system.
+- While most entities closely resemble their Postgres schemas, the `user` object includes joined fields such as `own_patient_id` and `own_doctor_id` to make front end code more concise and clear.
+
+##### Components & Styles
+- `react-router` is used to manage high-level routing of the app. These routes are expressed in the `App` component, which either redirects the user to another route or renders a component from the `components/pages` directory, which serve as high-level composers of other components.
+- Common controls are modelled as components to create re-usable interface elements across the application. ex: `Button` and `LabeledInput`
+- Views such as `PatientDetail` and `AppointmentDetail` are contextualized to either a doctor or patient context using the `session` data and their parent components.
 
 ## Future Improvements
 - Pooling of Postgres DB connections
