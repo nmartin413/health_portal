@@ -108,3 +108,8 @@ The client uses the popular `redux` framework to manage data on the frontend. En
 - Migration framework for database changes over time
 - Implementation of `watson` (or similar) logging framework for HTTP and Postgres requests on the web server
 - Database Record-level security measures (ensuring there's rules on who can see what rows, beyond the endpoint security)
+
+## Screenshots
+![Login](/readme_images/hp_login.png?raw=true "Login")
+![Patient List](/readme_images/hp_patient_list.png?raw=true "Patient List")
+![Patient Detail](/readme_images/hp_patient_detail.png?raw=true "Patient Detail")
