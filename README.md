@@ -52,6 +52,11 @@ See the "Design Topics" section below for more in-depth technical notes on patte
 - In the web server code, the various SQL queries used by the endpoints are abstracted as functions in a `queries` module, instead of being accessed through an ORM or inline SQL statements in endpoint code. This has the pleasant effect of creating a very clear and evident "inventory" of the discreet ways in which the database is interacted with.
 - To securely store passwords with minimal custom code, the Postgres `chkpass` module is used. [read more](https://www.postgresql.org/docs/9.6/static/chkpass.html)
 
+##### JavaScript
+- Two JS syntaxes exist within the app, split by the `src` and `server` directories
+- Frontend JS (`src`) is run through the Babel transpiler and all the ES6 features enabled by `create-react-app` are available
+- Backend JS (`server`) is not transpiled and all the ES6 features enabled by NodeJS v6.10.x are available
+- As coded, the two divisions do not share modules, although the door is not closed on such a possibility.
 
 ##### Auth & Security
 - The web server is a standard implementation of Express v4, using a few common "parser" libraries for the interpretation of JSON and cookies
@@ -71,11 +76,16 @@ The client uses the popular `redux` framework to manage data on the frontend. En
 - The `session` endpoints also include "side-loaded" data for bootstrapping the app, such as the list of `doctors` in the system.
 - While most entities closely resemble their Postgres schemas, the `user` object includes joined fields such as `own_patient_id` and `own_doctor_id` to make front end code more concise and clear.
 
-##### Components & Styles
+##### Components
 - `create-react-app` was used to skeleton the app, which is a packaged configuration of a `react` setup with a supporting `babel` and `webpack` build system.
 - `react-router` is used to manage high-level routing of the app. These routes are expressed in the `App` component, which either redirects the user to another route or renders a component from the `components/pages` directory, which serve as high-level composers of other components.
 - Common controls are modelled as components to create re-usable interface elements across the application. ex: `Button` and `LabeledInput`
 - Views such as `PatientDetail` and `AppointmentDetail` are contextualized to either a doctor or patient context using the `session` data and their parent components.
+- `PropTypes` and the associated react support are used to document and validate the data input each component expects.
+- Misc. Libraries
+  - `lodash` is used for various helper methods
+  - `moment` is used for the manipulation of dates
+  - `axios` is used as the HTTP request library
 
 ##### Styles
 - Styles are written in SCSS. There exist both styles that are tied to specific React components as well as styles used in multiple components. The idea here is to attach styles to components when it makes sense, but not be beholden to the concept, as single-component and cross-component styling strategies are by no means mutually exclusive.
@@ -85,6 +95,11 @@ The client uses the popular `redux` framework to manage data on the frontend. En
   - `.TopNav-link active`
   - `.TopNav-link`
 - Styles which are tied to specific components use the React class name as their `[Component]` name.
+
+##### DevTooling
+- The frontend development task (`start-ui`) leverages the out-of-the-box Webpack+Babel configuration shipped with `create-react-app`, where conveniences such as Hot Reloading are provided by Webpack Dev Server.
+- The backend development task (`watch-server`) is simply the `nodemon` process manager which starts and restarts the `server/index.js` file in response to changes in the `server` directory.
+- The css development task (`watch-css`) is also managed by `nodemon`, which runs `node-sass-chokidar` to compile a single css file in response to changes in `.scss` files in the `src` directory. Changes to the build CSS are acknowledged and re-served by Webpack Dev Server. (i.e. CSS hot reloading works)
 
 ## Future Improvements
 - Pooling of Postgres DB connections
