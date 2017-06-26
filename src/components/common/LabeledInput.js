@@ -1,5 +1,3 @@
-import './LabeledInput.css'
-
 import React, { Component } from 'react'
 
 export default class LabeledInput extends Component {
@@ -8,9 +6,9 @@ export default class LabeledInput extends Component {
     const { props: { label }} = this
 
     return (
-      <div className="LabeledInput">
-        <label className="LabeledInput-label">{label}</label>
-        <input className="LabeledInput-input" {...this.props} />
+      <div>
+        <label className="Form-label">{label}</label>
+        <input className="Form-input" {...this.props} />
       </div>
     )
   }

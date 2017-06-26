@@ -1,0 +1,39 @@
+.Box {
+  border        : 1px solid $color-line-light;
+  display       : block;
+  position      : relative;
+  padding       : 24px;
+  background    : white;
+  margin-bottom : 12px;
+  border-radius : 3px;
+}
+
+.Box-flag {
+  top            : 0;
+  right          : 0;
+  color          : $color-flag;
+  padding        : 6px 16px;
+  position       : absolute;
+  font-size      : 12px;
+  font-weight    : bold;
+  margin-top     : 8px;
+  text-transform : uppercase;
+  letter-spacing : 0.05em;
+
+  &.red {
+    color: $color-flag-danger;
+  }
+
+  &.green {
+    color: $color-flag-success;
+  }
+
+  &.yellow {
+    color: $color-flag-warning;
+  }
+}
+
+.Box-title {
+  font-size     : 18px;
+  margin-bottom : 18px;
+}

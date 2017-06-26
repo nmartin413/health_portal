@@ -1,0 +1,22 @@
+.Field {
+  margin-bottom  : 16px;
+}
+
+.Field-label {
+  font-size      : 12px;
+  letter-spacing : 0.05em;
+  margin         : 4px;
+  margin-bottom  : 8px;
+  color          : $color-text-muted;
+}
+
+.Field-value {
+  font-size     : 14px;
+  margin-bottom : 8px;
+  margin-left   : 8px;
+
+  &:empty:before {
+    content : "--";
+    color   : $color-text-muted;
+  }
+}

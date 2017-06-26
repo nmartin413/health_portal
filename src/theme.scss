@@ -1,19 +1,30 @@
 
 // Colors
 
-$color-background  : #f7f7f7;
+$color-background  : #eee;
 $color-foreground  : #fff;
 $color-highlight   : #39abd1;
 
-$color-line-light  : #e7e7e7;
+$color-line-light  : #ccc;
 $color-line-medium : #bbb;
 
-$color-text-basic    : #333;
-$color-text-muted    : #999;
-$color-text-inactive : #bbb;
+$color-text-normal        : #333;
+$color-text-muted         : #777;
+$color-text-inactive      : #bbb;
+$color-text-invert-normal : #fff;
+$color-text-invert-muted : #bbb;
 
-$color-btn           : #ddd;
+$color-btn           : #999;
+$color-btn-danger    : #f05b44;
+$color-btn-warning   : #fbbc05;
+$color-btn-success   : #34a853;
 $color-btn-highlight : #39abd1;
+
+$color-flag           : #999;
+$color-flag-danger    : #f05b44;
+$color-flag-warning   : #fbbc05;
+$color-flag-success   : #34a853;
+$color-flag-highlight : #39abd1;
 
 @mixin TitleFont {
   font-family    : 'Open Sans', sans-serif;

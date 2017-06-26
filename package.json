@@ -10,6 +10,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.15.3",
     "lodash": "^4.17.4",
+    "moment": "^2.18.1",
     "pg": "^6.4.0",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
@@ -23,7 +24,9 @@
     "uuid": "^3.1.0"
   },
   "devDependencies": {
+    "jest": "^20.0.4",
     "node-sass-chokidar": "0.0.3",
+    "nodemon": "^1.11.0",
     "npm-run-all": "^4.0.2",
     "react-scripts": "1.0.7",
     "redux-devtools": "^3.4.0"
@@ -33,13 +36,17 @@
     "build": "npm run build-css && react-scripts build",
     "start-ui": "react-scripts start",
     "start-server": "node server",
-    "init-db": "initdb ./tmp/postgres",
-    "stop-db": "pg_ctl -D ./tmp/postgres -l tmp/postgres-logfile stop",
-    "start-db": "pg_ctl -D ./tmp/postgres -l tmp/postgres-logfile start",
+    "init-pg": "initdb ./tmp/postgres",
+    "init-db": "./script/init-db.sh",
+    "drop-db": "./script/drop-db.sh",
+    "init-test-db": "./script/init-test-db.sh",
+    "drop-test-db": "./script/drop-test-db.sh",
+    "stop-pg": "pg_ctl -D ./tmp/postgres -l tmp/postgres-logfile stop",
+    "start-pg": "pg_ctl -D ./tmp/postgres -l tmp/postgres-logfile start",
     "watch-server": "nodemon --watch server --exec 'node server'",
-    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
-    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
-    "test": "react-scripts test --env=jsdom",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules ./src/index.scss > ./tmp/index.css; cp ./tmp/index.css ./src/index.css",
+    "watch-css": "nodemon --watch src --ext scss --exec 'npm run build-css'",
+    "test": "npm run drop-test-db > /dev/null; npm run init-test-db > /dev/null; NODE_ENV=test jest server server/*.test.js",
     "eject": "react-scripts eject"
   }
 }

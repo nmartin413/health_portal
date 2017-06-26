@@ -1,0 +1,39 @@
+.PatientList {
+  min-height  : 100%;
+  padding-top : 12px;
+}
+
+.PatientList-wrap {
+  display    : flex;
+  min-height : 100%;
+}
+
+.PatientList-sidebar {
+  flex       : 0 0 auto;
+  padding    : 24px;
+  min-height : calc(100vh - 32px);
+}
+
+.PatientList-sidebarTitle {
+  color     : $color-text-muted;
+  padding   : 16px 0 32px;
+  font-size : 20px;
+}
+
+.PatientList-results {
+  flex    : 1 0 auto;
+  padding : 24px;
+}
+
+.PatientList-result {
+}
+
+.PatientList-resultTitle {
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.PatientList-resultSubtitle {
+  color     : $color-text-muted;
+  font-size : 14px;
+}

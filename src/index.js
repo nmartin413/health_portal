@@ -1,5 +1,4 @@
 import 'reset-css/reset.css'
-import './index.css'
 
 import App                            from './components/App'
 import React                          from 'react'

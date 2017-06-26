@@ -1,4 +1,13 @@
 @import 'theme.scss';
+@import 'styles/App.scss';
+@import 'styles/Box.scss';
+@import 'styles/Form.scss';
+@import 'styles/Field.scss';
+@import 'styles/Button.scss';
+@import 'styles/LoginPage.scss';
+@import 'styles/PatientDetail.scss';
+@import 'styles/PatientList.scss';
+@import 'styles/TopNav.scss';
 
 // Fonts
 
@@ -7,8 +16,14 @@
 // Global CSS
 
 body {
-  color       : $color-text-basic;
+  color       : $color-text-normal;
   margin      : 0;
   padding     : 0;
+  background  : $color-background;
   font-family : 'Roboto', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }

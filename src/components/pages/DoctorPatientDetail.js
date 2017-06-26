@@ -1,22 +1,18 @@
-import keyBy                from 'lodash/keyBy'
-import {connect}            from 'react-redux'
-import PropTypes            from 'prop-types'
-import PatientDetail        from '../common/PatientDetail'
-import {getSessionPatientDetail}   from '../../actions/patients'
-import React, { Component } from 'react'
+import keyBy              from 'lodash/keyBy'
+import {connect}          from 'react-redux'
+import PatientDetail      from '../common/PatientDetail'
+import {getPatientDetail} from '../../actions/patients'
+import React, {Component} from 'react'
 
-class PatientHome extends Component {
-
-  static propTypes = {
-    session: PropTypes.object.isRequired
-  }
+class DoctorPatientDetail extends Component {
 
   componentDidMount() {
-    this.props.dispatch(getSessionPatientDetail())
+    this.props.dispatch(getPatientDetail(this.props.match.params.id))
   }
 
   render() {
     const { props: { session, patient, doctorsById, appointments }} = this
+
     const dataReady = !!(patient)
 
     return (
@@ -44,4 +40,4 @@ export default connect(
     doctorsById  : keyBy(state.doctors.all, d => d.id),
     appointments : state.patients.detailAppointments,
   })
-)(PatientHome)
+)(DoctorPatientDetail)

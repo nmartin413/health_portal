@@ -1,24 +1,20 @@
-import './LoginPage.css'
-
 import cx                 from 'classnames'
 import Button             from '../common/Button'
 import {connect}          from 'react-redux'
 import PropTypes          from 'prop-types'
-import Constants          from '../../Constants'
 import LabeledInput       from '../common/LabeledInput'
-import {createSession}    from '../../actions/user'
+import {createSession}    from '../../actions/session'
 import React, {Component} from 'react'
 
 class LoginPage extends Component {
 
   static propTypes = {
-    user     : PropTypes.object.isRequired,
     dispatch : PropTypes.func.isRequired
   }
 
   constructor(props, context) {
     super(props, context)
-    this.state = { email: '', password: '', userType: Constants.patientUserGroup }
+    this.state = { email: '', password: '', userType: 'doctor-user' }
   }
 
   handleLogin = (evt) => {
@@ -50,11 +46,11 @@ class LoginPage extends Component {
         <div className="LoginPage-prompt">
           <div className="LoginPage-graphic" />
           <div className="LoginPage-userTypes">
-            {this.renderTypeOption('Patient Login', Constants.patientUserGroup)}
-            {this.renderTypeOption('Doctor Login', Constants.doctorUserGroup)}
+            {this.renderTypeOption('Doctor Login', 'doctor-user')}
+            {this.renderTypeOption('Patient Login', 'patient-user')}
           </div>
-          <form className="LoginPage-form" onSubmit={this.handleLogin}>
-            <div className="LoginPage-formControl">
+          <form className="LoginPage-form Form" onSubmit={this.handleLogin}>
+            <div className="Form-control">
               <LabeledInput
                 type        = "text"
                 label       = "email"
@@ -63,7 +59,7 @@ class LoginPage extends Component {
                 placeholder = "you@example.com"
               />
             </div>
-            <div className="LoginPage-formControl">
+            <div className="Form-control">
               <LabeledInput
                 type        = "password"
                 label       = "password"
@@ -72,8 +68,8 @@ class LoginPage extends Component {
                 placeholder = ""
               />
             </div>
-            <div className="LoginPage-formControl right">
-              <Button primary type="submit" label="Login" />
+            <div className="Form-control right">
+              <Button displayType="primary" type="submit" label="Login" />
             </div>
           </form>
         </div>
@@ -84,7 +80,5 @@ class LoginPage extends Component {
 }
 
 export default connect(
-  (state) => ({
-    user: state.user
-  })
+  (state) => ({ })
 )(LoginPage)

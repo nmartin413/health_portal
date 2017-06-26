@@ -1,0 +1,65 @@
+.TopNav-wrap {
+  top             : 0;
+  flex            : 1 0 auto;
+  left            : 0;
+  right           : 0;
+  display         : flex;
+  z-index         : 1;
+  position        : fixed;
+  background      : rgba(0,0,0,0.95);
+  justify-content : center;
+}
+
+.TopNav {
+  flex      : 1 0 auto;
+  display   : flex;
+  max-width : 1140px;
+}
+
+.TopNav-brand {
+  @include TitleFont;
+
+  color   : rgba(255,255,255,0.65);
+  flex    : 0 0 auto;
+  height  : 16px;
+  padding : 8px;
+  margin-right: 12px;
+}
+
+.TopNav-linksLeft {
+  flex      : 1 0 auto;
+  color     : white;
+  font-size : 12px;
+}
+
+.TopNav-link {
+  flex        : 1 0 auto;
+  color       : $color-text-invert-muted;
+  height      : 32px;
+  cursor      : pointer;
+  padding     : 0 8px;
+  font-size   : 14px;
+  line-height : 32px;
+
+  &.active, &:hover {
+    color : $color-text-invert-normal;
+  }
+}
+
+.TopNav-linksRight {
+  flex          : 0 0 auto;
+  display       : flex;
+  padding-right : 12px;
+}
+
+.TopNav-username {
+  color       : $color-text-invert-muted;
+  height      : 32px;
+  font-size   : 12px;
+  line-height : 32px;
+}
+
+.TopNav-logout {
+  font-size   : 12px;
+  margin-left : 12px;
+}

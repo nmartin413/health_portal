@@ -1,7 +1,5 @@
-@import 'theme.scss';
-
 .LoginPage {
-  height          : 90vh;
+  height          : 600px;
   display         : flex;
   align-content   : center;
   justify-content : center;
@@ -16,7 +14,9 @@
 }
 
 .LoginPage-graphic {
-  height              : 220px;
+  height              : 80px;
+  margin-top          : 30px;
+  margin-bottom       : 20px;
   background-size     : contain;
   background-image    : url('/static/images/heartbeat.png');
   background-repeat   : no-repeat;
@@ -25,34 +25,29 @@
 
 .LoginPage-userTypes {
   display : flex;
+  padding: 12px 0;
 }
 
 .LoginPage-userTypeOption {
   flex          : 1 0;
-  cursor        : pointer;
   color         : $color-text-inactive;
-  padding       : 12px 8px;
+  cursor        : pointer;
+  margin        : 0 8px;
+  padding       : 8px;
   text-align    : center;
   transition    : all 250ms;
   border-bottom : 2px solid $color-line-light;
 
   &:hover {
-    color: $color-text-basic;
+    color: $color-text-normal;
   }
 
   &.active {
-    color               : $color-text-basic;
+    color               : $color-text-normal;
     border-bottom-color : $color-line-medium;
   }
 }
 
 .LoginPage-form {
-}
-
-.LoginPage-formControl {
-  margin : 24px 12px;
-
-  &.right {
-    text-align: right;
-  }
+  padding: 0 12px 12px;
 }
