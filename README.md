@@ -104,6 +104,7 @@ The client uses the popular `redux` framework to manage data on the frontend. En
 ## Future Improvements
 - Pooling of Postgres DB connections
 - Tests for front end components
+- Tests against HTTP endpoints
 - Implement Medical Record uploads
 - Migration framework for database changes over time
 - Implementation of `watson` (or similar) logging framework for HTTP and Postgres requests on the web server
